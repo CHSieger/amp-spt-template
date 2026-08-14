@@ -1,9 +1,0 @@
-[
-    {
-        "Protocol": "TCP",
-        "Port": 6969,
-        "Ref": "SPTHTTPS",
-        "Name": "SPT HTTPS",
-        "Description": ""
-    }
-]
