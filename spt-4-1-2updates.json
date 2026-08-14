@@ -8,11 +8,10 @@
     "SkipOnFailure": false
   },
   {
-    "UpdateStageName": "Install Fika Server 2.4.0",
-    "UpdateSourcePlatform": "Linux",
-    "UpdateSource": "Executable",
-    "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"set -euo pipefail; BASE=\\\"{{$FullBaseDir}}\\\"; ROOT=\\\"{{$FullRootDir}}\\\"; TMP=\\\"${ROOT}.fika-install\\\"; FIKA_DIR=\\\"$BASE/user/mods/fika-server\\\"; if [ -d \\\"$FIKA_DIR\\\" ]; then echo \\\"[FIKA] Fika Server already installed - skipping download.\\\"; exit 0; fi; mkdir -p \\\"$TMP\\\"; echo \\\"[FIKA] Resolving Fika Server 2.4.0 release...\\\"; curl -fsSL -H \\\"Accept: application/vnd.github+json\\\" \\\"https://api.github.com/repos/project-fika/Fika-Server-CSharp/releases/tags/v2.4.0\\\" -o \\\"$TMP/release.json\\\"; FIKA_URL=\\\"$(python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); print(next(a[\\\"browser_download_url\\\"] for a in d[\\\"assets\\\"] if a[\\\"name\\\"]==\\\"Fika.Server.Release.2.4.0.zip\\\"))' \\\"$TMP/release.json\\\")\\\"; [ -n \\\"$FIKA_URL\\\" ] || { echo \\\"[FIKA] ERROR: Release asset not found\\\"; exit 30; }; echo \\\"[FIKA] Downloading Fika Server 2.4.0...\\\"; curl -fL --retry 3 \\\"$FIKA_URL\\\" -o \\\"$TMP/fika.zip\\\"; echo \\\"[FIKA] Extracting into SPT installation...\\\"; python3 -c 'import zipfile,sys; zipfile.ZipFile(sys.argv[1]).extractall(sys.argv[2])' \\\"$TMP/fika.zip\\\" \\\"$BASE\\\"; test -d \\\"$BASE/user/mods/fika-server\\\" || { echo \\\"[FIKA] ERROR: fika-server directory missing after extraction\\\"; exit 31; }; rm -rf \\\"$TMP\\\"; echo \\\"[FIKA] Fika Server 2.4.0 installation complete.\\\"\"",
-    "SkipOnFailure": false
-  }
-]
+  "UpdateStageName": "Install Fika Server 2.4.0",
+  "UpdateSourcePlatform": "Linux",
+  "UpdateSource": "Executable",
+  "UpdateSourceData": "/bin/bash",
+  "UpdateSourceArgs": "-c \"set -euo pipefail; BASE=\\\"{{$FullBaseDir}}\\\"; ROOT=\\\"{{$FullRootDir}}\\\"; TMP=\\\"${ROOT}.fika-install\\\"; if find \\\"$BASE\\\" -type f -iname \\\"*Fika*.dll\\\" -print -quit 2>/dev/null | grep -q .; then echo \\\"[FIKA] Fika Server already installed - skipping download.\\\"; exit 0; fi; rm -rf \\\"$TMP\\\"; mkdir -p \\\"$TMP/extract\\\"; echo \\\"[FIKA] Resolving Fika Server 2.4.0 release...\\\"; curl -fsSL -H \\\"Accept: application/vnd.github+json\\\" \\\"https://api.github.com/repos/project-fika/Fika-Server-CSharp/releases/tags/v2.4.0\\\" -o \\\"$TMP/release.json\\\"; FIKA_URL=\\\"$(python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); print(next(a[\\\"browser_download_url\\\"] for a in d[\\\"assets\\\"] if a[\\\"name\\\"]==\\\"Fika.Server.Release.2.4.0.zip\\\"))' \\\"$TMP/release.json\\\")\\\"; [ -n \\\"$FIKA_URL\\\" ] || { echo \\\"[FIKA] ERROR: Release asset not found\\\"; exit 30; }; echo \\\"[FIKA] Downloading Fika Server 2.4.0...\\\"; curl -fL --retry 3 \\\"$FIKA_URL\\\" -o \\\"$TMP/fika.zip\\\"; echo \\\"[FIKA] Extracting archive...\\\"; python3 -c 'import zipfile,sys; zipfile.ZipFile(sys.argv[1]).extractall(sys.argv[2])' \\\"$TMP/fika.zip\\\" \\\"$TMP/extract\\\"; SRC=\\\"$TMP/extract\\\"; if [ -d \\\"$TMP/extract/SPT\\\" ]; then SRC=\\\"$TMP/extract/SPT\\\"; fi; echo \\\"[FIKA] Installing from $SRC to $BASE\\\"; cp -a \\\"$SRC\\\"/. \\\"$BASE\\\"/; FIKA_DLL=\\\"$(find \\\"$BASE\\\" -type f -iname \\\"*Fika*.dll\\\" -print -quit)\\\"; [ -n \\\"$FIKA_DLL\\\" ] || { echo \\\"[FIKA] ERROR: No Fika DLL found after installation\\\"; echo \\\"[FIKA] Extracted files:\\\"; find \\\"$TMP/extract\\\" -maxdepth 5 -type f; exit 31; }; echo \\\"[FIKA] Found: $FIKA_DLL\\\"; rm -rf \\\"$TMP\\\"; echo \\\"[FIKA] Fika Server 2.4.0 installation complete.\\\"\"",
+  "SkipOnFailure": false
+}
