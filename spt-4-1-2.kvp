@@ -30,7 +30,6 @@ Meta.AppIsMultiIPAware=False
 App.DisplayName=SPT Tarkov 4.1.2
 App.RootDir=./spt-tarkov-412/
 App.BaseDirectory=./spt-tarkov-412/serverfiles/
-App.ExecutableWin=
 App.ExecutableLinux=serverfiles/SPT.Server.Linux
 App.WorkingDir=serverfiles
 App.LinuxCommandLineArgs=
