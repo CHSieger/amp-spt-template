@@ -37,8 +37,7 @@ App.WindowsCommandLineArgs=
 App.CommandLineArgs=
 App.UseLinuxIOREDIR=False
 App.AppSettings={}
-App.EnvironmentVariables={}
-App.CommandLineParameterFormat={0}={1}
+App.EnvironmentVariables={"DOTNET_ROOT":"{{$FullRootDir}}dotnet","DOTNET_ROOT_X64":"{{$FullRootDir}}dotnet"}App.CommandLineParameterFormat={0}={1}
 App.CommandLineParameterDelimiter=
 App.ExitMethod=OS_CLOSE
 App.ExitTimeout=30
