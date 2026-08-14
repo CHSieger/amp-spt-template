@@ -1,10 +1,11 @@
 {
-    "id": "d1c15d43-1bfc-495f-93e8-51822cb9ab0c",
-    "authors": [
-        "Local - Made with AMP Config Generator"
-    ],
-    "origin": "https://github.com/Local/AMPTemplates.git",
-    "url": "https://github.com/Local/AMPTemplates",
-    "imagefile": "",
-    "prefix": "Local"
+  "id": "b051768a-12ce-4b67-81fa-44333d9f7e5c",
+  "authors": [
+    "CHSieger"
+  ],
+  "origin": "https://github.com/CHSieger/amp-spt-template.git",
+  "url": "https://github.com/CHSieger/amp-spt-template",
+  "imagefile": "",
+  "prefix": "SPT",
+  "repotype": "AppTemplates"
 }
