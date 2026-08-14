@@ -1,0 +1,20 @@
+[
+    {
+        "DisplayName": "Backend Port",
+        "Category": "SPT Server:settings",
+        "Subcategory": "Network:lan:1",
+        "Description": "TCP port used by the SPT HTTPS/WebSocket backend.",
+        "Keywords": "port,backend,network",
+        "FieldName": "$ApplicationPort1",
+        "InputType": "number",
+        "MinValue": "1",
+        "MaxValue": "65535",
+        "IsFlagArgument": false,
+        "ParamFieldName": "Port",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "6969",
+        "Placeholder": "6969",
+        "Suffix": "TCP",
+        "EnumValues": {}
+    }
+]
