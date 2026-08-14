@@ -1,0 +1,10 @@
+[
+  {
+    "Port": 6969,
+    "Ref": "ApplicationPort1",
+    "Name": "SPT HTTPS",
+    "Protocol": "TCP",
+    "Optional": false,
+    "Range": 1
+  }
+]
