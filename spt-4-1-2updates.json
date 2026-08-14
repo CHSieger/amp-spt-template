@@ -1,5 +1,13 @@
 [
   {
+  "UpdateStageName": "Install .NET 10.0.9",
+  "UpdateSourcePlatform": "Linux",
+  "UpdateSource": "Executable",
+  "UpdateSourceData": "/bin/bash",
+  "UpdateSourceArgs": "-c \"set -euo pipefail; ROOT=\\\"{{$FullRootDir}}\\\"; DOTNET_DIR=\\\"${ROOT}dotnet\\\"; TMP=\\\"${ROOT}.dotnet-install\\\"; if [ -x \\\"$DOTNET_DIR/dotnet\\\" ] && \\\"$DOTNET_DIR/dotnet\\\" --list-runtimes 2>/dev/null | grep -q \\\"Microsoft.AspNetCore.App 10.0.9\\\"; then echo \\\"[DOTNET] .NET 10.0.9 already installed - skipping.\\\"; exit 0; fi; rm -rf \\\"$TMP\\\"; mkdir -p \\\"$TMP\\\" \\\"$DOTNET_DIR\\\"; echo \\\"[DOTNET] Downloading dotnet-install.sh...\\\"; curl -fsSL https://dot.net/v1/dotnet-install.sh -o \\\"$TMP/dotnet-install.sh\\\"; chmod +x \\\"$TMP/dotnet-install.sh\\\"; echo \\\"[DOTNET] Installing ASP.NET Core Runtime 10.0.9...\\\"; \\\"$TMP/dotnet-install.sh\\\" --runtime aspnetcore --version 10.0.9 --install-dir \\\"$DOTNET_DIR\\\"; test -x \\\"$DOTNET_DIR/dotnet\\\"; \\\"$DOTNET_DIR/dotnet\\\" --list-runtimes; rm -rf \\\"$TMP\\\"; echo \\\"[DOTNET] .NET 10.0.9 installation complete.\\\"\"",
+  "SkipOnFailure": false
+},
+  {
     "UpdateStageName": "Install SPT 4.1.2",
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
